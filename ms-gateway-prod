@@ -1,0 +1,31 @@
+server:
+  port: 8082
+
+server:
+  cloud:
+    gateway:
+      routes:
+        - id: productRoute
+          uri: lb://ms-product/
+          predicates:
+
+management:
+  endpoints:
+    exposure:
+      include: info, health, refresh
+  info:
+    env:
+      enabled: true
+  endpoint:
+    info:
+      enabled: true
+    health:
+      enabled: true
+    refresh:
+      enabled: true
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: Api Gateway
+    version: 1.0.0
